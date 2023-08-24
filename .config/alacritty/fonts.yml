@@ -1,0 +1,15 @@
+font:
+  # iNSTA
+  normal:
+   family: "JetBrainsMono Nerd Font"
+   style:  Semibold
+
+  italic:
+   family: "JetBrainsMono Nerd Font"
+   style:  Italic
+
+  bold_italic:
+   family: "JetBrainsMono Nerd Font"
+   style:  Bold Italic
+
+  size: 10

@@ -1,0 +1,196 @@
+
+{
+	"layer": "top",
+    "position": "top",
+	"modules-left": ["wlr/workspaces","cpu","memory","tray"],
+	"modules-center": [""],
+	"modules-right": ["custom/clipboard","pulseaudio","network","battery","idle_inhibitor","clock","custom/notifications"],
+
+
+
+	"wlr/workspaces": {
+	  "format": "{icon}",
+	  "cursor": "Dracula-cursors",
+	  "on-click": "activate",
+	  "format-icons": {
+      "1": "󰆍",
+      "2": "󰈹",
+      "3": "",
+      "4": "",
+      "5": "󰝚",
+      "6": "󰗃",
+      "7": "",
+      "8": "",
+      "9": "",
+      "10": "󰡨",
+	    "urgent": "󰻂",
+        "default": "󰝥"
+	  },
+	  "sort-by-number": true
+  },
+
+  "cpu": {
+    "tooltip": true,
+    "interval": 15,
+    "theme": "Dracula-cursors",
+    "format": " {usage}%",
+    "max-length": 10,
+    "on-click": "kitty btop",
+  },
+  
+  "memory": {
+    "tooltip": true,
+    "tooltip-format": " Currently using {used} GB of memory and {swapUsed} GB of swap.\n{avail} GB of memory and {swapAvail} GB of swap available.",
+    "theme": "Dracula-cursors",
+    "interval": 30,
+    "format": " {percentage}%",
+    "max-length": 10,
+    "on-click": "kitty btop",
+
+  },
+
+  "tray": {
+		"icon-size": 20,
+		"spacing": 10
+	},
+  "mpd": {
+    "format": "{stateIcon} {title}",
+    "format-disconnected": "󰝚 Disconnected",
+    "format-stopped": " 󰝚  Stopped",
+    "interval": 2,
+    "random-icons": {
+        "off": "<span color=\"#f53c3c\"></span> ",
+        "on": " "
+    },
+    "repeat-icons": {
+        "on": " "
+    },
+    "single-icons": {
+        "on": "1"
+    },
+    "state-icons": {
+        "paused": "  ",
+        "playing": "  ",
+    },
+    "tooltip-format": "MPD (connected)\n{artist}-{album}-{title}",
+    "tooltip-format-disconnected": "MPD (disconnected)",
+    "on-click": "mpc toggle",
+   },
+  "custom/mpd": {
+		"format": "󰝚 {}",
+		"tooltip": true,
+		"tooltip-format":"Hello",
+		"return-type": "string",
+		"exec": "~/bin/musicinfo title",
+		"on-click-left": "mpc toggle",
+		"interval": 5,
+		"separator": false,
+    },
+
+
+
+  "custom/clipboard": {
+    "format": "󰅌",
+    "tooltip": false,
+    "on-click": "copyq menu",
+    "on-click-right": "copyq toggle"
+  },
+
+	"pulseaudio": {
+    "tooltip": true,
+    "tooltip-format": "{icon} Currently at {volume}%\n{desc}",
+    "scroll-step": 5,
+		"format": "{icon}",
+		"format-muted": "󰝟",
+		"on-click": "volumectl %",
+    "on-click-right": "pavucontrol",
+		"format-icons": ["󰕿", "󰖀", "󰕾"]
+	},
+
+  "bluetooth": {
+    "format": "󰂯",
+    "format-disabled": "󰂲",
+    "format-connected": "󰂱",
+    "format-connected-battery": "{icon}",
+    "format-icons": ["󰤾", "󰤿", "󰥀", "󰥁", "󰥂", "󰥃", "󰥄", "󰥅", "󰥆", "󰥉"],
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+	  "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+	  "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "on-click-left": "blueman-manager",
+  },
+
+	"network": {
+		"tooltip": true,
+    "tooltip-format-wifi": "{icon} Connected to {essid}\nSignal: {signalStrength}",
+    "format-disconnected": "󰤭",
+		"format-wifi": "{icon}",
+    "format-icons": ["󰤯","󰤟", "󰤢", "󰤥", "󰤨"],
+		"format-ethernet": "󰈀",
+    "on-click": "networkmanager_dmenu",
+    "on-click-right": "nm-connection-editor",
+	},
+
+  "battery": {
+    "tooltip": true,
+    "tooltip-format": "Battery is currently at {capacity}%.\n{timeTo}.",
+    "states": {
+      "good": 95,
+      "warning": 39,
+      "critical": 20
+    },
+    "format": "{icon}",
+    "format-charging": "󱐋{icon}",
+    "format-plugged": " ",
+    "format-icons": ["", "", "", "", ""]
+  },
+  
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "󰽢",
+      "deactivated": "󰖨"
+    }
+  },
+
+  "clock": {
+    "tooltip": true,
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode"          : "month",
+      "mode-mon-col"  : 3,
+      "weeks-pos"     : "right",
+      "on-scroll"     : 1,
+      "on-click-right": "mode",
+      "format": {
+        "months":     "<span color='#f5c2e7'><b>{}</b></span>",
+        "days":       "<span color='#cdd6f4'><b>{}</b></span>",
+        "weeks":      "<span color='#74c7ec'><b>W{}</b></span>",
+        "weekdays":   "<span color='#fab387'><b>{}</b></span>",
+        "today":      "<span color='#a6e3a1'><b><u>{}</u></b></span>"
+      }
+    },
+    "format": "{: %I:%M %p}"
+  },
+
+  "custom/notifications": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "󱅫",
+      "none": "󰂚",
+      "dnd-notification": "󱅫",
+      "dnd-none": "󰂛",
+      "inhibited-notification": "󱅫",
+      "inhibited-none": "󰂚",
+      "dnd-inhibited-notification": "󱅫",
+      "dnd-inhibited-none": "󰂛"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "sleep 0.1; swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+}
+

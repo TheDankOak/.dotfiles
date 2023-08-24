@@ -1,0 +1,304 @@
+@import url("themes/Catppuccin.css");
+* {
+	border: none;
+  font-family: "JetBrainsMono Nerd Font";
+	font-size: 14px;
+	min-height: 1px;
+}
+
+window#waybar {
+    border-radius: 0px;
+	background:
+	/*linear-gradient(90deg, @background 0%,transparent 35%,transparent 70%, @background 100%)*/
+	linear-gradient(90deg, @background 0%,@exp 35%,@exp 70%, @background 100%);
+	
+}
+
+window#waybar.hidden {
+	opacity: 0.2;
+}
+
+#window {
+	transition: none;
+  color: transparent;
+	background: @overlay;
+}
+
+@keyframes lowbat {
+    to {
+        background-color: @overlay;
+        color: @foreground;
+    }
+}
+
+@keyframes notif {
+  to {
+      background-color: @overlay;
+      color: @foreground;
+  }
+}
+
+@keyframes dndnotif {
+  to {
+      background-color: @overlay;
+      color: @foreground;
+  }
+}
+
+#network,
+#bluetooth,
+#custom-clipboard,
+#pulseaudio,
+#battery,
+#clock,
+#memory,
+#cpu,
+#temperature,
+#tray,
+#idle_inhibitor {
+	padding-left: 10px;
+	padding-right: 2px;
+	transition: none;
+}
+
+#network,
+#pulseaudio,
+#bluetooth,
+#battery {
+  padding-right: 5px;
+}
+
+#cpu,
+#memory {
+  font-size: 17px;
+}
+
+#custom-clipboard,
+#pulseaudio,
+#bluetooth,
+#network,
+#battery,
+#idle_inhibitor {
+  font-size: 20px;
+}
+
+#cpu {
+  padding: 0 5px 0 5px;
+	color: @purple;
+	background: @overlay;
+	border-radius: 10px 0 0 10px;
+}
+
+#memory {
+  padding: 0 5px 0 5px;
+  margin-right: 10px;
+	color: @orange;
+	background: @overlay;
+  border-radius: 0 10px 10px 0;
+}
+
+#workspaces {
+  background-color: transparent;
+  margin-left: 5px;
+}
+
+#workspaces button {
+  margin-right: 10px;
+  border-radius: 10px;
+  background: @overlay;
+  color: @foreground;
+}
+
+#workspaces button:hover {
+  background: @foreground;
+  color: @overlay;
+}
+
+#workspaces button.active {
+  background: @rosewater;
+  color: @overlay;
+}
+
+#workspaces button label {
+  font-size: 20px;
+  padding-right: 3px;
+  margin: -4px;
+}
+
+#tray {
+	color: @foreground;
+	background: @overlay;
+	border-radius: 10px;
+	padding-right: 10px;
+}
+
+#custom-clipboard {
+  background: @overlay;
+  color: @blue;
+  border-radius: 10px;
+  margin-right: 10px;
+  padding-right: 13px;
+}
+
+#pulseaudio {
+	background: @overlay;
+	color: @orange;
+  border-radius: 10px 0 0 10px;
+}
+
+#pulseaudio.muted {
+  font-size: 20px;
+  color: @magenta;
+}
+
+#bluetooth,
+#bluetooth.connected,
+#bluetooth.connected-battery,
+#bluetooth.on {
+  font-size: 20px;
+  background: @overlay;
+	color: @blue;
+}
+
+#bluetooth.disabled,
+#bluetooth.off {
+  color: @white;
+}
+
+#network.ethernet,
+#network {
+  background: @overlay;
+	color: @cyan;
+  padding-right: 11px;
+}
+
+#network.disconnected {
+  color: @red;
+}
+
+#battery {
+	background: @overlay;
+	color: @green;
+  padding-right: 12px;
+}
+
+#battery.charging, #battery.plugged {
+	background: @overlay;
+  color: @purple;
+  padding-right: 14px;
+  padding-left: 7px;
+}
+
+#battery.plugged {
+	background: @overlay;
+  color: @purple;
+  padding-right: 8px;
+}
+
+#battery.critical:not(.charging) {
+  background: @overlay;
+  color: @red;
+  animation-name: lowbat;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#idle_inhibitor {
+	background: @overlay;
+	margin-right: 10px;
+	padding-right: 14px;
+	border-radius: 0 10px 10px 0;
+}
+
+#idle_inhibitor.deactivated {
+  color: @purple;
+}
+
+#idle_inhibitor.activated {
+  color: @pink;
+}
+
+#clock {
+  font-size: 16px;
+	background: @overlay;
+	color: @cyan;
+	border-radius: 10px;
+	padding-right: 10px;
+	margin-right: 10px;
+}
+
+#custom-notifications,
+#custom-notifications.none,
+#custom-notifications.inhibited-none{
+	font-size: 20px;
+	border-radius: 10px;
+	color: @white;
+	background: @overlay;
+	padding-right: 12px;
+	padding-left: 10px;
+	margin-right: 2px;
+}
+
+#custom-notifications.dnd-none,
+#custom-notifications.dnd-inhibited-none {
+  color: @magenta;
+}
+
+#custom-notifications.notification,
+#custom-notifications.dnd-notification,
+#custom-notifications.inhibited-notification,
+#custom-notifications.dnd-inhibited-notification {
+  color: @white;
+  background: @overlay;
+  animation-name: notif;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;  
+}
+
+#custom-notifications.dnd-notification,
+#custom-notifications.dnd-inhibited-notification {
+  color: @white;
+  background: @overlay;
+  animation-name: dndnotif;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+
+/* Style for the custom MPD widget */
+#mpd {
+  font-family: "JetBrainsMono Nerd Font Light";
+  font-size: 14px;
+  padding: 0 10px 0 15px;
+  margin: 0 10px 0 10px;
+  color: @foreground;
+  background-color: @overlay;
+  border-radius: 10px;
+}
+
+/* Style for the play/pause, previous, and next buttons */
+/*
+#custom-mpd-buttons {
+  margin-top: 5px;
+}
+
+#play-pause-button, #previous-button, #next-button {
+  font-size: 16px;
+  padding: 3px 5px;
+  margin: 0;
+  color: @foreground;
+  background-color: @background;
+  border: none;
+  border-radius: 10px;
+}
+
+#play-pause-button:hover, #previous-button:hover, #next-button:hover {
+  background-color: @background;
+}
+*/
