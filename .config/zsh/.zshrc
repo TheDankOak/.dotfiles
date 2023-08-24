@@ -33,7 +33,7 @@ alias -g emacs='emacsclient -c -a 'emacs''
 alias -g rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
 alias -g parrot='curl parrot.live'
 alias -g portainer='sudo docker start Portainer'
-alias -g gconfig='git --git-dir=/home/shridal/.dotfiles --work-tree=/home/shridal'
+alias -g dotfiles='git --git-dir=/home/shridal/.dotfiles --work-tree=/home/shridal'
 alias -g web='qutebrowser'
 # Opening prompt
 
