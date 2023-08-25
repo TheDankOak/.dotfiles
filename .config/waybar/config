@@ -121,13 +121,14 @@
 
 	"network": {
 		"tooltip": true,
-    "tooltip-format-wifi": "{icon} Connected to {essid}\nSignal: {signalStrength}",
-    "format-disconnected": "󰤭",
+		"tooltip-format-wifi": "{icon} Connected to {essid}\nSignal: {signalStrength}",
+		"format-disconnected": "󰤭",
 		"format-wifi": "{icon}",
-    "format-icons": ["󰤯","󰤟", "󰤢", "󰤥", "󰤨"],
+		"format-icons": ["󰤯","󰤟", "󰤢", "󰤥", "󰤨"],
 		"format-ethernet": "󰈀",
-    "on-click": "networkmanager_dmenu",
-    "on-click-right": "nm-connection-editor",
+		"format-linked": "󰖂",
+		"on-click": "networkmanager_dmenu",
+		"on-click-right": "nm-connection-editor",
 	},
 
   "battery": {

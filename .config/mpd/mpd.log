@@ -864,3 +864,8 @@ Aug 23 21:18 : exception: Failed to open '/home/shridal/.config/mpd/playlists/[R
 Aug 23 21:18 : exception: No such playlist
 Aug 23 21:58 : output: Failed to pause "default detected output" (pulse): failed to connect the stream: Connection terminated
 Aug 23 21:58 : player: played "YOASOBI「あの夢をなぞって (Ballade Ver.)」 - スマホ映画『夢の雫と星の花』コラボスペシャルムービー.m4a"
+Aug 25 13:50 : exception: Unsupported URI scheme
+Aug 25 13:50 : exception: Failed to open '/home/shridal/.config/mpd/playlists/[Radio Streams].m3u': No such file or directory
+Aug 25 13:50 : exception: No such playlist
+Aug 25 13:50 : ffmpeg/mov,mp4,m4a,3gp,3g2,mj2: stream 0, timescale not set
+Aug 25 13:52 : ffmpeg/mov,mp4,m4a,3gp,3g2,mj2: stream 0, timescale not set
