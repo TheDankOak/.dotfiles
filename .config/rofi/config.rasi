@@ -8,7 +8,7 @@ configuration {
 	scroll-method: 0;
 	normalize-match: true;
 	show-icons: true;
-	icon-theme:         "Zafiro";
+	icon-theme: "Papirus-Dark";
 /*	cache-dir: ;*/
 	steal-focus: false;
 /*	dpi: -1;*/
@@ -39,7 +39,7 @@ configuration {
     }
 
 	/*---------- Run settings ----------*/
-	run-command: "{cmd}";
+	run-command: "alacritty -e {cmd}";
 	run-list-command: "";
 	run-shell-command: "{terminal} -e {cmd}";
 

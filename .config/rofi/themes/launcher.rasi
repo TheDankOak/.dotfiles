@@ -1,208 +1,179 @@
-/* Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com> */
-/* Everyone is permitted to copy and distribute copies of this file under GNU-GPL3 */
+/**
+ *
+ * Author : Aditya Shakya (adi1090x)
+ * Github : @adi1090x
+ * 
+ * Rofi Theme File
+ * Rofi Version: 1.7.3
+ **/
 
+/*****----- Configuration -----*****/
 configuration {
-    location: 						0;
-    fixed-num-lines: 				true;
-    show-icons:                     true;
-    icon-theme:						"Deepin2022";
-    sidebar-mode: 					true;
-    scroll-method: 					1;
-    window-format: 					"[{w}] ··· {c} ···  {t}";
-    click-to-exit: 					true;
-    combi-hide-mode-prefix: 		false;
-    display-window: 				"";
-    display-windowcd: 				"";
-    display-run: 					"";
-    display-ssh: 					"";
-    display-drun: 					"";
-    display-combi: 					"";
+	modi:                       "drun,filebrowser,run";
+    show-icons:                 true;
+    display-drun:               "Apps";
+    display-run:                "Run";
+    display-filebrowser:        "Files";
+    display-window:             "Windows";
+	drun-display-format:        "{name}\n[<span weight='light' size='small'><i>({generic})</i></span>]";
+	window-format:              "Class : {c}\nWorkspace : {w}";
 }
 
-@import "font.rasi"
-@import "colors.rasi"
+/*****----- Global Properties -----*****/
+@import                          "shared/colors.rasi"
+@import                          "shared/fonts.rasi"
 
-* {
-    background-color:             	@background;
-}
-
+/*****----- Main Window -----*****/
 window {
-    border: 						0px;
-    border-color: 					@selector;
-    border-radius: 					10px;
-    width: 							500px;
-    padding:                         10px;
-    height: 						0px;
+    /* properties for window widget */
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       500px;
+    x-offset:                    0px;
+    y-offset:                    0px;
+    /* properties for all widgets */
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     0px;
+    border:						 2px;
+    border-color:				 @accent;
+    border-radius:               14px;
+    cursor:                      "default";
+    background-color:            @background;
 }
 
-prompt {
-    spacing: 						1;
-    border-radius: 					3px;
-    border: 						2;
-    background-color:             	@selector;
-    text-color: 					@background;
-    padding:    					6px 16px 6px 10px;
-    font:                           "JetBrainsMono NL Nerd Font 12";
+/*****----- Main Box -----*****/
+mainbox {
+    enabled:                     true;
+    spacing:                     15px;
+    padding:                     30px;
+    background-color:            @background;
+    children:                    [ "inputbar", "mode-switcher", "listview" ];
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+    enabled:                     true;
+    spacing:                     15px;
+    margin:                      0px;
+    background-color:            @background;
+    children:                    [ "textbox-prompt-colon", "entry" ];
 }
 
 textbox-prompt-colon {
-    expand: 						false;
-    border-radius: 					0px;
-    str: 							"";
-    padding:    					6px 4px 6px 4px;
-    text-color: 					@foreground;
+    enabled:                     true;
+    expand:                      false;
+    padding:                     12px 16px;
+    border:                      2px;
+    border-radius:               10px;
+    border-color:                @accent;
+    background-color:            @background;
+    text-color:                  @text;
+    str:                         " ";
 }
-
 entry {
-    spacing:    					10;
-    border-radius: 					0px;
-    expand:                         true;
-    horizontal-align:               0.01;
-    vertical-align:                 0.5;
-    text-color: 					@foreground;
-    placeholder-color:              @foreground;
-    placeholder:                    "Search...";
-    padding:    					6px 2px 6px 2px;
-    border: 						0px 0px 1px 0px;
-    border-color: 					@foreground;
-    border-radius: 					0px;
-    font:                           "JetBrainsMono NL Nerd Font 10";
+    enabled:                     true;
+    padding:                     12px 16px;
+    border:                      2px;
+    border-radius:               10px;
+    border-color:                @accent;
+    background-color:            @background;
+    text-color:                  @text;
+    cursor:                      text;
+    placeholder:                 "Search...";
+    placeholder-color:           inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
 }
 
-case-indicator {
-    spacing:    					0;
-    text-color: 					@foreground;
-}
-
-inputbar {
-    spacing:    					0px;
-    border-radius: 					0px;
-    text-color: 					@foreground;
-    border: 						0px;
-    border-color: 					@selector;
-    children: 						[ prompt,textbox-prompt-colon,entry ];
-}
-
-mainbox {
-    border: 						0px;
-    border-radius: 					10px;
-    border-color: 					@selector;
-    spacing: 						6px;
-    padding: 						10px;
-}
-
+/*****----- Listview -----*****/
 listview {
-    lines:							8;
-    columns:						1;
-    fixed-height: 					0;
-    border: 						0px;
-    border-radius: 					0px;
-    border-color: 					@foreground;
-    spacing: 						5px;
-    scrollbar: 						false;
-    padding: 						4px 4px 4px;
+    enabled:                     true;
+    columns:                     1;
+    lines:                       5;
+    cycle:                       true;
+    dynamic:                     true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    
+    spacing:                     10px;
+    background-color:            transparent;
+    cursor:                      "default";
 }
 
-element-text {
-    padding: 						6px 0px 4px;
-    border-radius: 					0px;
-    background-color:               inherit;
-    text-color:                     inherit;
-    font:                           "JetBrainsMono NL Nerd Font 10";
-}
-element-icon {
-    padding: 						0px 10px 0px;
-    border-radius: 					0px;
-    size:                           24px;
-    background-color:               inherit;
-    text-color:                     inherit;
-    font:                           "JetBrainsMono NL Nerd Font 20";
-}
-
+/*****----- Elements -----*****/
 element {
-    border: 						0px;
-    border-radius: 					10px;
-    padding: 						7px;
-}
-element normal.normal {
-    background-color: 				@background;
-    text-color:       				@foreground;
-}
-element normal.urgent {
-    background-color: 				@background;
-    text-color:       				@off;
+    enabled:                     true;
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     10px;
+    border:                      0px solid;
+    border-radius:               14px;
+    background-color:            transparent;
+    text-color:                  @text;
+    cursor:                      pointer;
 }
 element normal.active {
-    background-color: 				@background;
-    text-color:       				@selected;
+    background-image:            linear-gradient(to right, #19B466, #7BF4B7);
+    text-color:                  black;
 }
 element selected.normal {
-    background-color: 				@selector;
-    text-color:       				@background;
-    border: 						0px;
-    border-color: 					@selector;
-}
-element selected.urgent {
-    background-color: 				@background;
-    text-color:       				@off;
+    border-radius:               10px;
+    background-image:            linear-gradient(to right,#f0c6c6 , #F4DBD6);
+    text-color:                  black;
 }
 element selected.active {
-    background-color: 				@background;
-    text-color:       				@selector;
+    background-image:            linear-gradient(to right, #F4DBD6, #EAACAB);
+    text-color:                  black;
 }
-element alternate.normal {
-    background-color: 				@background;
-    text-color:       				@foreground;
+element-icon {
+    background-color:            transparent;
+    size:                        48px;
+    cursor:                      inherit;
 }
-element alternate.urgent {
-    background-color: 				@background;
-    text-color:       				@foreground;
-}
-element alternate.active {
-    background-color: 				@background;
-    text-color:       				@foreground;
-}
-
-sidebar {
-    border:       					0px;
-    border-color: 					@selector;
-    border-radius: 					0px;
+element-text {
+    background-color:            inherit;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
 }
 
+/*****----- Mode Switcher -----*****/
+mode-switcher{
+    enabled:                     true;
+    expand:                      false;
+    spacing:                     15px;
+    background-color:            transparent;
+}
 button {
-    margin: 						5px 0px 0px 0px;
-    horizontal-align:               0.47;
-    vertical-align:                 0.5;
-    padding: 						7px;
-    font:                           "JetBrainsMono NL Nerd Font 13";
-    text-color: 					@foreground;
-    border: 						0px;
-    border-radius: 					0px;
-    border-color: 					@selected;
+    font:                        "Iosevka Nerd Font 10";
+    padding:                     10px;
+    border-radius:               100%;
+    background-color:            #8aadf4;
+    text-color:                  white;
+    cursor:                      pointer;
 }
-
 button selected {
-    background-color:             	@selector;
-    text-color: 					@background;
-    border: 						0px;
-    border-radius: 					10px;
-    border-color: 					@selector;
+    background-color:            #8bd5ca;
+    text-color:                  black;
 }
 
-scrollbar {
-    width:        					4px;
-    border:       					0px;
-    handle-color: 					@foreground;
-    handle-width: 					8px;
-    padding:      					0;
+/*****----- Message -----*****/
+error-message {
+    padding:                     20px;
+    background-color:            white;
+    text-color:                  black;
 }
-
-message {
-    border: 						0px;
-    border-color: 					@selector;
-    padding: 						1px;
-}
-
 textbox {
-    text-color: 					@foreground;
+    padding:                     0px;
+    border-radius:               0px;
+    text-color:                  black;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
 }
