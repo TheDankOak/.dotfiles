@@ -64,9 +64,9 @@ run_cmd() {
 			mpc -q pause
 			systemctl suspend
 		elif [[ $1 == '--logout' ]]; then
-			if [[ "$DESKTOP_SESSION" == 'hyprland' ]]; then
-				killall hyprland
-			fi
+			#if [[ "$DESKTOP_SESSION" == 'hyprland' ]]; then
+				killall Hyprland
+			#fi
 		fi
 	else
 		exit 0

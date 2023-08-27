@@ -39,7 +39,7 @@ configuration {
     }
 
 	/*---------- Run settings ----------*/
-	run-command: "alacritty -e {cmd}";
+	run-command: "{cmd}";
 	run-list-command: "";
 	run-shell-command: "{terminal} -e {cmd}";
 
