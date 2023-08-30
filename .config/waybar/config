@@ -4,7 +4,7 @@
     "position": "top",
 	"modules-left": ["wlr/workspaces","cpu","memory","tray"],
 	"modules-center": [""],
-	"modules-right": ["custom/clipboard","pulseaudio","network","battery","idle_inhibitor","clock","custom/notifications"],
+	"modules-right": ["custom/clipboard","pulseaudio","bluetooth","network","battery","idle_inhibitor","clock","custom/notifications"],
 
 
 
@@ -116,7 +116,7 @@
     "tooltip-format": "{controller_alias}\t{controller_address}",
 	  "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
 	  "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "on-click-left": "blueman-manager",
+    "on-click": "blueman-manager",
   },
 
 	"network": {

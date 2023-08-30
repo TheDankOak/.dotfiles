@@ -3,6 +3,8 @@
 
 configuration {
     show-icons:                     false;
+    display-window: 				"Windows :";
+    window-format: 					"{w} · {c} · {t}";
     disable-history:                false;
 	click-to-exit: 					true;
 }
@@ -17,8 +19,7 @@ window {
     border:                  		2px;
     border-color:                  	@accent;
     border-radius:                  14px;
-    width:                          400px;
-    height:                         420px;
+    width:                          500px;
     location:                       center;
     anchor:                         center;
     x-offset:                       0;
@@ -31,43 +32,44 @@ prompt {
     padding:    					10px 5px 10px 5px;
 	background-color: 				@background;
 	text-color: 					@foreground;
-    border:                  		2px 0px 2px 2px;
+    border:                  		2px 1px 2px 2px;
     border-color:                  	@accent;
     border-radius:                  14px 0px 0px 14px;
 }
 
 textbox-prompt-colon {
 	expand: 						false;
-	str: 							"直";
-    spacing: 						1;
-    border-radius: 					14px;
-    border: 						2px;
-    background-color:             	@background;
-    text-color: 					@text;
-    border-color:					@accent;
-    padding:    					6px 10px 6px 10px;
-    font:                           "JetBrainsMono NL Nerd Font 12";
+	str: 							" ";
+    border-radius:                  14px;
+    background-color:               @background;
+    text-color:                     @text;
+    border:                  		2px 2px 2px 2px;
+    border-color:                  	@accent;
+    border-radius:                  14px;
+    margin:							0px;    
+    padding:    					5px 10px 5px 14px;
+	font:							"Iosevka Nerd Font 14";
 }
 
 entry {
     background-color:               @background;
-    text-color:                     @text;
-    border:                  		2px 2px 2px 1px;
+    text-color:                     @foreground;
+    border:                  		2px 2px 2px 0px;
     border-radius:                  0px 14px 14px 0px;
     border-color:                  	@accent;
     placeholder-color:              @foreground;
-    placeholder:                    "";
+    placeholder:                    "Find...";
     expand:                         true;
     horizontal-align:               0;
     blink:                          true;
-    padding:                        10px 5px 10px 5px;
+    padding:                        10px;
 }
 
 inputbar {
 	children: 						[ textbox-prompt-colon, prompt, entry ];
     spacing:                        0;
     background-color:               @background;
-    text-color:                     @text;
+    text-color:                     @foreground;
     expand:                         false;
     margin:                         0px 0px 0px 0px;
     padding:                        0px;
@@ -76,7 +78,7 @@ inputbar {
 
 case-indicator {
     background-color:               @background;
-    text-color:                     @text;
+    text-color:                     @foreground;
     spacing:                        0;
 }
 
@@ -85,7 +87,7 @@ listview {
     background-color:               @background;
     columns:                        1;
     lines:							7;
-    spacing:                        4px;
+    spacing:                        5px;
     cycle:                          true;
     dynamic:                        true;
     layout:                         vertical;
@@ -102,7 +104,7 @@ element {
     background-color:               @background;
     text-color:                     @foreground;
     orientation:                    horizontal;
-    border-radius:                  10px;
+    border-radius:                  0px;
     padding:                        5px;
 }
 
@@ -124,19 +126,6 @@ element-text {
     margin:                         2px 0px 2px 2px;
 }
 
-element normal.urgent,
-element alternate.urgent {
-    background-color:               @foreground;
-    text-color:                     @foreground;
-    border-radius:                  0px;
-}
-
-element normal.active,
-element alternate.active {
-    background-color:               @background;
-    text-color:                     @foreground;
-}
-
 element selected {
     background-image:               linear-gradient(to right,#f0c6c6 , #F4DBD6);
     background-color:				transparent;
@@ -146,12 +135,25 @@ element selected {
     border-color:                  	@accent;
 }
 
-element selected.urgent {
-    background-color:               @foreground;
-    text-color:                     @foreground;
+element.active,
+element.selected.urgent {
+  background-color: @selected;
+  text-color: @background;
+  border-color: @selected;
 }
 
-element selected.active {
-    background-color:               @background;
-    color:                          @foreground;
+element.selected.urgent {
+  border-color: @accent;
 }
+
+element.urgent,
+element.selected.active {
+  background-color: @off;
+  text-color: @background;
+  border-color: @off;
+}
+
+element.selected.active {
+  border-color: @accent;
+}
+
